@@ -1,29 +1,31 @@
-# New Project
+# snowpack-test
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
-
-## Available Scripts
+> Sample app for showing problems with environment variables using `snowpack` and `@snowpack/plugin-webpack`
 
 ### npm start
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+Run the example with plain `snowpack`, i.e. not bundling anything. Should alert the following:
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+![](images/alert.png)
 
-### npm test
+### npm run serve
 
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
+Builds a static copy of your site to the `build/` folder using `@snowpack/plugin-webpack` and serves it with `serve`.
 
-### npm run build
+The console should show something similar to:
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
+![](images/console.png)
 
-**For the best production performance:** Add a build bundler plugin like "@snowpack/plugin-webpack" or "@snowpack/plugin-parcel" to your `snowpack.config.json` config file.
+Checking the built code should show something like:
 
-### Q: What about Eject?
+![](images/code.png)
 
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+In particular this line looks a bit weird:
+
+```js
+const { SNOWPACK_PUBLIC_API_URL } = ({ url: getAbsoluteUrl('_dist_/App.js') }).env;
+```
+
+The code is trying to access the `.env` property on an object which clearly doesn't have that property set. It looks like something is missing.
+
+
