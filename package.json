@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "SNOWPACK_PUBLIC_API_URL='http://foo.bar' snowpack dev",
-    "build": "SNOWPACK_PUBLIC_API_URL='http://foo.bar' snowpack build"
+    "build": "SNOWPACK_PUBLIC_API_URL='http://foo.bar' snowpack build",
+    "serve": "rm build -rf && npm run build && serve build/"
   },
   "dependencies": {
     "react": "^16.13.1",
@@ -11,6 +12,7 @@
     "@snowpack/app-scripts-react": "^1.9.0",
     "@snowpack/plugin-webpack": "^2.0.6",
     "@testing-library/react": "^10.0.3",
+    "serve": "^11.3.2",
     "snowpack": "^2.8.0"
   }
 }
