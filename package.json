@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build"
+    "start": "SNOWPACK_PUBLIC_API_URL='http://foo.bar' snowpack dev",
+    "build": "SNOWPACK_PUBLIC_API_URL='http://foo.bar' snowpack build"
   },
   "dependencies": {
     "react": "^16.13.1",

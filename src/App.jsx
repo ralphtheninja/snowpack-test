@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const { SNOWPACK_PUBLIC_API_URL } = import.meta.env
+  alert(`Api url is: '${SNOWPACK_PUBLIC_API_URL}'`)
   return (
     <div className="App">
       <header className="App-header">
